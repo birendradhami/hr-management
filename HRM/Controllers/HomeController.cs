@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace hr_management.Controllers
+namespace HRM.Controllers
 {
     public class HomeController : Controller
     {

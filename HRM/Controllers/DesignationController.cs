@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace hr_management.Controllers
+namespace HRM.Controllers
 {
     public class DesignationController : Controller
     {

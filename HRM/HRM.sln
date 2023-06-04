@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hr-mangement", "hr-mangement.csproj", "{56B67E80-7CB0-4027-935B-BF953472F18C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRM", "HRM.csproj", "{56B67E80-7CB0-4027-935B-BF953472F18C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRM.DataAccess", "..\HRM.DataAccess\HRM.DataAccess.csproj", "{EFE4AF1F-8FDF-4429-AABB-A8B55C200B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRM.DataAccess", "..\HRM.DataAccess\HRM.DataAccess.csproj", "{EFE4AF1F-8FDF-4429-AABB-A8B55C200B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRM.Models", "..\HRM.Models\HRM.Models.csproj", "{F8C16849-AD10-446F-97C2-358A396F6D04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRM.Models", "..\HRM.Models\HRM.Models.csproj", "{F8C16849-AD10-446F-97C2-358A396F6D04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRM.Utility", "..\HRM.Utility\HRM.Utility.csproj", "{B02D4AD3-DFC6-4B6D-9522-51145BD45297}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRM.Utility", "..\HRM.Utility\HRM.Utility.csproj", "{B02D4AD3-DFC6-4B6D-9522-51145BD45297}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
