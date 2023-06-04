@@ -2,6 +2,7 @@
 using hr_management.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace hr_management.Controllers
 {
@@ -12,17 +13,36 @@ namespace hr_management.Controllers
         {
             _db = db;
         }
+        [HttpGet]
         public IActionResult Index()
         {
-            /*var objEmployeeList = _db.Employees.ToList();*/
-            IEnumerable<Employee> objEmployeeList = _db.Employees;
-            return View(objEmployeeList);
+            // Fetch all employees from db        
+            var employees = _db.Employees.Include(x => x.Designation).ToList();
+            var employee = _db.Employees.Include(x => x.Department).ToList();
+
+            return View(employees);
         }
-        //Get
+        /*//Get
 		public IActionResult Create()
 		{
 			return View();
-		}
+		}*/
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var designations = _db.Designations.ToList();
+            var designationList = designations.Select(x => new SelectListItem { Text = x.Title, Value = x.Id.ToString() });
+            ViewData["DesignationList"] = designationList;
+
+            var departments = _db.Departments.ToList();
+            ViewData["DepartmentList"] = departments.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+
+
+            return View();
+        }
+
+
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -38,6 +58,7 @@ namespace hr_management.Controllers
             return View(obj);*/
             _db.Employees.Add(obj);
             _db.SaveChanges();
+            TempData["Success"] = "Employee created successfully";
             return RedirectToAction("Index");
 
         }
@@ -67,12 +88,49 @@ namespace hr_management.Controllers
             return View(obj);*/
             _db.Employees.Update(obj);
             _db.SaveChanges();
+            TempData["Success"] = "Employee updated successfully";
+
             return RedirectToAction("Index");
 
         }
 
-		//Get
-		[HttpGet]
+        //Get
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+
+            var employeeFromDb = _db.Employees.Find(id);
+            //var employeeFromDb = _db.Employees.FirstOrDefault(x => x.Id == Id);
+
+            return View(employeeFromDb);
+        }
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Details(int? id)
+        {
+            //Server Side Validation
+            /*if (ModelState.IsValid)
+            {
+                _db.Employees.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);*/
+            var obj = _db.Employees.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.Employees.Update(obj);
+            _db.SaveChanges();
+            TempData["Success"] = "Employee updated successfully";
+            return RedirectToAction("Index");
+
+        }
+
+        //Get
+        [HttpGet]
 		public IActionResult Delete(int id)
 		{
 
@@ -101,7 +159,8 @@ namespace hr_management.Controllers
             }
 			_db.Employees.Remove(obj);
 			_db.SaveChanges();
-			return RedirectToAction("Index");
+            TempData["Success"] = "Employee deleted successfully";
+            return RedirectToAction("Index");
 
 		}
 	}

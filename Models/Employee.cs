@@ -25,5 +25,15 @@ namespace hr_management.Models
         [DataType(DataType.Date)]
         public DateTime JoinDate { get; set; }
 
-	}
+        public Designation? Designation { get; set; }
+
+        [DisplayName("Designation")]
+        public int DesignationId { get; set; }
+
+        public Department? Department { get; set; }
+
+        [DisplayName("Department")]
+        public int DepartmentId { get; set; }
+
+    }
 }

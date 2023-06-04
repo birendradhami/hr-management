@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="~/hr_management.styles.css" asp-append-version="true" />
 	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
 </head>
 <body>
+    <partial name="_Notifications" />
     <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
@@ -26,7 +28,14 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Designation" asp-action="Index">Designation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Department" asp-action="Index">Department</a>
+                        </li>
+
+
                         @*<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu">
