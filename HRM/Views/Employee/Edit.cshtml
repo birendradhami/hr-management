@@ -3,6 +3,7 @@
 <h2>Edit Employee</h2>
 
 <form class="row g-3" method="post" asp-action="Edit">
+    <input asp-for="Id" hidden/>
     <div class="col-md-6">
         <label asp-for="Name" class="form-label"></label>
         <input asp-for="Name" class="form-control">
@@ -36,7 +37,18 @@
         <label asp-for=JoinDate class="form-label"></label>
         <input asp-for=JoinDate class="form-control">
         <span asp-validation-for="JoinDate" Class="text-danger"></span>
+	</div>
+    <div class="col-md-6">
+		<label asp-for=DepartmentId class="form-label"></label>
+		<input asp-for=DesignationId class="form-control">
+		<span asp-validation-for="DesignationId" Class="text-danger"></span>
+	</div>
+    <div class="col-md-6">
+        <label asp-for=DepartmentId class="form-label"></label>
+        <input asp-for=DepartmentId class="form-control">
+        <span asp-validation-for="DepartmentId" Class="text-danger"></span>
     </div>
+    
 
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Update</button>

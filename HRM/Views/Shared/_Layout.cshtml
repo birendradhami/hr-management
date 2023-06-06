@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - HRM</title>
     <link rel="stylesheet" href="~/css/bootswatchtheme.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HRM.styles.css" asp-append-version="true" />
 	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
@@ -46,10 +47,11 @@
                             </div>
                         </li>*@
                     </ul>
-                    <form class="d-flex">
+                    <partial name="_LoginPartial" />
+                   @* <form class="d-flex">
                         <input class="form-control me-sm-2" type="search" placeholder="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    </form>*@
                 </div>
             </div>
         </nav>

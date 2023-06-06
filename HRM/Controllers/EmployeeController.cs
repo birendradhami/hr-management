@@ -17,8 +17,8 @@ namespace HRM.Controllers
         public IActionResult Index()
         {
             // Fetch all employees from db        
-            var employees = _db.Employees.Include(x => x.Designation).ToList();
-            var employee = _db.Employees.Include(x => x.Department).ToList();
+            var employees = _db.Employees.Include(x => x.Designation).Include(x => x.Department).ToList();
+            /*var employee = _db.Employees.Include(x => x.Department).ToList();*/
 
             return View(employees);
         }
@@ -36,8 +36,8 @@ namespace HRM.Controllers
             ViewData["DesignationList"] = designationList;
 
             var departments = _db.Departments.ToList();
-            ViewData["DepartmentList"] = departments.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
-
+            var departmentList = departments.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+            ViewData["DepartmentList"] = departmentList;
 
             return View();
         }
@@ -65,7 +65,7 @@ namespace HRM.Controllers
 
         //Get
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
             
             var employeeFromDb = _db.Employees.Find(id);
@@ -79,20 +79,14 @@ namespace HRM.Controllers
         public IActionResult Edit(Employee obj)
         {
             //Server Side Validation
-            /*if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _db.Employees.Add(obj);
+                _db.Employees.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(obj);*/
-            _db.Employees.Update(obj);
-            _db.SaveChanges();
-            TempData["Success"] = "Employee updated successfully";
-
-            return RedirectToAction("Index");
-
-        }
+            return View(obj);
+        }          
 
         //Get
         [HttpGet]
@@ -104,30 +98,7 @@ namespace HRM.Controllers
 
             return View(employeeFromDb);
         }
-        //Post
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Details(int? id)
-        {
-            //Server Side Validation
-            /*if (ModelState.IsValid)
-            {
-                _db.Employees.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(obj);*/
-            var obj = _db.Employees.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            _db.Employees.Update(obj);
-            _db.SaveChanges();
-            TempData["Success"] = "Employee updated successfully";
-            return RedirectToAction("Index");
-
-        }
+        
 
         //Get
         [HttpGet]
