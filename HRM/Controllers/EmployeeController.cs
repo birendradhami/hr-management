@@ -22,6 +22,7 @@ namespace HRM.Controllers
 
             return View(employees);
         }
+
         /*//Get
 		public IActionResult Create()
 		{
